@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { updateMeasurements } from "@/lib/actions/customers";
 import { MeasurementInput, ExtraMeasurementInput } from "@/lib/validation/customers";
-import { Measurement } from "@prisma/client";
+import type { Measurement } from "@prisma/client";
 import { Check, Edit2, Plus, Save, Trash2, X } from "lucide-react";
 
 interface MeasurementFormProps {
