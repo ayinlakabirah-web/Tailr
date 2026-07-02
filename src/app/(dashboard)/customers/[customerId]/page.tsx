@@ -10,16 +10,16 @@ import { notFound, redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 
 interface CustomerPageProps {
-  params: {
+  params: Promise<{
     customerId: string;
-  };
+  }>;
 }
 
 export default async function CustomerPage({ params }: CustomerPageProps) {
   const session = await getSession();
   if (!session) redirect("/auth");
 
-  const customerId = params.customerId;
+  const { customerId } = await params;
   const customer = await getCustomer(customerId);
 
   if (!customer) {
