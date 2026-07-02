@@ -79,7 +79,17 @@ export default async function PaymentsPage() {
         />
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-          {payments.map((payment) => (
+          {payments.map((payment: { 
+            id: string; 
+            status: "UNPAID" | "PARTIALLY_PAID" | "PAID"; 
+            totalAmount: { toString: () => string };
+            depositPaid: { toString: () => string };
+            order: { 
+              id: string; 
+              outfitType: string; 
+              customer: { fullName: string } 
+            } 
+          }) => (
             <Link
               key={payment.id}
               href={`/orders/${payment.order.id}`}

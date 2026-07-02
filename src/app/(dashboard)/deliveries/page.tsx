@@ -84,7 +84,16 @@ export default async function DeliveriesPage() {
         />
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-3)" }}>
-          {deliveries.map((delivery) => (
+          {deliveries.map((delivery: { 
+            id: string; 
+            status: "PENDING" | "SHIPPED" | "DELIVERED"; 
+            deliveryDate: Date;
+            order: { 
+              id: string; 
+              outfitType: string; 
+              customer: { fullName: string } 
+            } 
+          }) => (
             <Link
               key={delivery.id}
               href={`/orders/${delivery.order.id}`}
