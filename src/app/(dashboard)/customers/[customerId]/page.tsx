@@ -124,7 +124,7 @@ export default async function CustomerPage({ params }: CustomerPageProps) {
               </div>
             ) : (
               <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-4)" }}>
-                {customer.orders.map((order) => (
+                {customer.orders.map((order: { id: string; outfitType: string; status: string; createdAt: Date }) => (
                   <div key={order.id} style={{ 
                     padding: "var(--space-3)", 
                     borderRadius: "8px", 
