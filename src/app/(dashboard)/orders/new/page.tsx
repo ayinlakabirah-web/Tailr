@@ -20,7 +20,7 @@ export default async function NewOrderPage({
   });
 
   if (customerId) {
-    const customer = customers.find((c) => c.id === customerId);
+    const customer = customers.find((c: { id: string; fullName: string }) => c.id === customerId);
     if (!customer) redirect("/orders/new");
   }
 
